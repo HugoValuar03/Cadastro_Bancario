@@ -12,9 +12,13 @@ public class Agencia {
 		this.cidade = cidade;
 	}
 
+	public Agencia() {
+        
+    }
+
 	@Override
 	public String toString() {
-		return "Agencia [numero=" + numero + ", estado=" + estado + ", cidade=" + cidade + "]";
+		return "numero: " + numero + ", estado: " + estado + ", cidade: " + cidade;
 	}
 
 	public String getNumero() {
