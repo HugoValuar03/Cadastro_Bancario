@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +33,7 @@ public class BancoCentral {
 		List<Agencia> agencias = new ArrayList<Agencia>();
 		
 		System.out.println("Informe o nome da agencia: ");
-		agencia.setNome(scan.next());
+		agencia.setNome(scan.nextLine());
 		
 		System.out.println("Informe o tipo de agencia:");
 		for (TipoAgencia tipo : TipoAgencia.values()) {
@@ -42,24 +41,25 @@ public class BancoCentral {
 		}
 
 		agencia.setTipoAgencia(TipoAgencia.valueOf(scan.nextInt()));
+		scan.nextLine();
 		
 		System.out.println("Informe o numero da conta: ");
-		agencia.setConta(scan.next());
+		agencia.setConta(scan.nextLine());
 		
 		System.out.println("Informe o numero da agencia:");
-		numero = scan.next();
+		numero = scan.nextLine();
 		
 		System.out.println("Informe o estado da agencia:");
-		String estado = scan.next();
+		String estado = scan.nextLine();
 		
 		System.out.println("Informe a cidade da agencia:");
-		String cidade = scan.next();
+		String cidade = scan.nextLine();
 		
 		agencias.add(new Agencia(numero, estado, cidade));
 		agencia.setAgencia(agencias);
 		
 		System.out.println("Informe o endereco da agencia: ");
-		agencia.setEndereco(scan.next());
+		agencia.setEndereco(scan.nextLine());
 
 		bancoMap.put(agencia.getNome(), agencia);
 		System.out.println("Agencia Cadastrada!");
@@ -70,7 +70,7 @@ public class BancoCentral {
 			System.out.println("Nenhuma agência cadastrada");
 		} else {
 			System.out.println("Digite o nome da agência que deseja alterar: ");
-			String nomeAgencia = scan.next();
+			String nomeAgencia = scan.nextLine();
 
 			BancoCentral bancoCentral = bancoMap.get(nomeAgencia);
 			if (bancoCentral == null) {
@@ -83,13 +83,16 @@ public class BancoCentral {
 
 				agenciasOrdenados.sort((o1, o2) -> o1.getNome().compareTo(o2.getNome()));
 				
-				System.out.println("Lista das agencias");
-				agenciasOrdenados.forEach(agencia -> System.out.println(agencia));
+				System.out.println("Lista das agencias: ");
+				agenciasOrdenados.forEach(agencia -> {
+					System.out.println(agencia);
+					System.out.println();
+				});
 				
 				
 				System.out.println(" ");
 				
-				System.out.println("1 - Nome da conta");
+				System.out.println("1 - Nome da agência");
 				System.out.println("2 - Número da conta");
 				System.out.println("3 - Número da agência");
 				System.out.println("4 - Nome do Estado");
@@ -99,11 +102,12 @@ public class BancoCentral {
 				System.out.println();
 				
 				int opcao = scan.nextInt();
-
+				scan.nextLine();
+				
 				switch (opcao) {
 					case 1:
 						System.out.println("Digite o novo nome da agência: ");
-						String novoNome = scan.next();
+						String novoNome = scan.nextLine();
 			
 						BancoCentral banco = bancoMap.get(nomeAgencia);
 						if (banco == null) {
@@ -118,7 +122,7 @@ public class BancoCentral {
 						
 					case 2:
 						System.out.println("Digite o novo número da conta: ");
-						String novoNumeroConta = scan.next();
+						String novoNumeroConta = scan.nextLine();
 
 						banco = bancoMap.get(nomeAgencia);
 						if (banco == null) {
@@ -132,7 +136,7 @@ public class BancoCentral {
 						
 					case 3:
 						System.out.println("Digite o novo número da agência: ");
-						String novoNumeroAgencia = scan.next();
+						String novoNumeroAgencia = scan.nextLine();
 						
 						banco = bancoMap.get(nomeAgencia);
 						if (banco == null) {
@@ -150,7 +154,7 @@ public class BancoCentral {
 
 					case 4:
 						System.out.println("Digite o novo nome do estado: ");
-						String novoNomeEstado = scan.next();
+						String novoNomeEstado = scan.nextLine();
 						
 						banco = bancoMap.get(nomeAgencia);
 						if (banco == null) {
@@ -168,7 +172,7 @@ public class BancoCentral {
 					
 					case 5:
 						System.out.println("Digite o novo nome da cidade: ");
-						String novoNomeCidade = scan.next();
+						String novoNomeCidade = scan.nextLine();
 						
 						banco = bancoMap.get(nomeAgencia);
 						if (banco == null) {
@@ -187,7 +191,7 @@ public class BancoCentral {
 
 					case 6:
 						System.out.println("Digite o novo endereço: ");
-						String novoEndereco = scan.next();
+						String novoEndereco = scan.nextLine();
 
 						banco = bancoMap.get(nomeAgencia);
 						if (banco == null) {
@@ -212,7 +216,7 @@ public class BancoCentral {
 			System.out.println("Nenhuma agência cadastrada.");
 		} else {
 			System.out.println("Digite o nome da agência que deseja excluir: ");
-			String nomeAgencia = scan.next();
+			String nomeAgencia = scan.nextLine();
 	
 			BancoCentral bancoCentral = bancoMap.get(nomeAgencia);
 			if (bancoCentral == null) {
@@ -226,15 +230,17 @@ public class BancoCentral {
 	
 	public static void listarAgencia() {
 		if (bancoMap.isEmpty()) {
-			System.out.println("Nenhuma agencia cadastrada.");
+			System.out.println("Nenhuma agência cadastrada.");
 		} else {
 			List<BancoCentral> agenciasOrdenados = new ArrayList<>(bancoMap.values());
 
 			agenciasOrdenados.sort((o1, o2) -> o1.getNome().compareTo(o2.getNome()));
 			
-			System.out.println("Lista das agencias");
-			agenciasOrdenados.forEach(agencia -> System.out.println(agencia));
-
+			System.out.println("Lista das agencias: ");
+			agenciasOrdenados.forEach(agencia -> {
+				System.out.println(agencia);
+				System.out.println();
+			});
 		}
 	}
 	
@@ -250,7 +256,7 @@ public class BancoCentral {
 	
 	@Override
 	public String toString() {
-		return "nome: " + nome + "\nconta: "+ conta + "\nagencia: " + agencia.toString() + "\nendereco: " + endereco + "\ntipoAgencia: "
+		return "Nome: " + nome + "\nConta: "+ conta + "\nAgência: " + agencia.toString() + "\nEndereco: " + endereco + "\nTipo Agência: "
 				+ tipoAgencia.getDescricao();
 	}
 	
