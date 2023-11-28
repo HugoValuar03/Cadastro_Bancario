@@ -1,7 +1,6 @@
-
 public enum TipoAgencia {
-	
-	AGENCIA_PRINCIPAL(1, " - Agencia Principal"), AGENCIA_VIRTUAL(2, " - Agencia Virtual");
+
+	AGENCIA_PRINCIPAL(1, "Agencia Principal"), AGENCIA_VIRTUAL(2, "Agencia Virtual");
 	
 	private int id;
 	private String descricao;
@@ -35,5 +34,4 @@ public enum TipoAgencia {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
 }

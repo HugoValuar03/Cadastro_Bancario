@@ -1,4 +1,3 @@
-
 public class Agencia {
 	
 	private String numero;
@@ -18,7 +17,7 @@ public class Agencia {
 
 	@Override
 	public String toString() {
-		return "numero: " + numero + ", estado: " + estado + ", cidade: " + cidade;
+		return "número: " + numero + ", estado: " + estado + ", cidade: " + cidade;
 	}
 
 	public String getNumero() {
