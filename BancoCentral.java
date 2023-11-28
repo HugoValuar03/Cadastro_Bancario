@@ -36,24 +36,32 @@ public class BancoCentral {
 		System.out.println("Informe o nome da agencia: ");
 		agencia.setNome(scan.nextLine());
 		
-		boolean tipoAgencia = false;
-		while (tipoAgencia == false) {
+		boolean tipoagencia = false;
+		while (tipoagencia == false) {
 			try {
 				
 				System.out.println("Informe o tipo de agencia:");
 				for (TipoAgencia tipo : TipoAgencia.values()) {
-					System.out.println(tipo.getId() + " - " + tipo.getDescricao());
+				    System.out.println(tipo.getId() + " - " + tipo.getDescricao());
 				}
-				agencia.setTipoAgencia(TipoAgencia.valueOf(scan.nextInt()));
+
+				int agenciaTipo = scan.nextInt();
 				scan.nextLine();
-				tipoAgencia = true;
+
+				if (agenciaTipo == 1 || agenciaTipo == 2) {
+				    agencia.setTipoAgencia(TipoAgencia.valueOf(agenciaTipo));
+				    tipoagencia = true;
+				} else {
+				    System.err.println("Valor inválido! Você deve inserir 1 ou 2, para o tipo de agência.");
+				    tipoagencia = false;
+				}
 				
 			} catch (InputMismatchException e) {
-				System.err.println("Erro!!! \nVocê deve inserir 1 ou 2");
+				System.err.println("Erro!!! Você deve inserir 1 ou 2");
 				scan.nextLine();
 			}
 			catch(NullPointerException e) {
-				System.err.println("Erro!!! \nO valor não pode ser null, Você deve inserir 1 ou 2");
+				System.err.println("Erro!!! O valor não pode ser null, Você deve inserir 1 ou 2");
 				scan.nextLine();
 			}
 		}
